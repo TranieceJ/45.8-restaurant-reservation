@@ -22,12 +22,12 @@ function read(reservation_id){
     .first()
 };
 
-function setStatus(reservation_id, status){
+function setStatus(updatedReservation){
     return knex("reservations")
-    .where({reservation_id})
-    .update("status", status)
-    .returning("*")
-    .then(updatedStatus => updatedStatus[0])
+    .where({reservation_id: updatedReservation.reservation_id})
+    .whereNot({status: "finished"})
+    .update(updatedReservation, "*")
+    .then((updatedStatus) => updatedStatus[0])
 }
 
 function readByNumber(mobile_number){

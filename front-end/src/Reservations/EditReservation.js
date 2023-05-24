@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
 // import utility functions
-import { editReservation, readReservation } from "../utils/api";
+import { updateReservation, readReservation } from "../utils/api";
 import { formatAsDate } from "../utils/date-time";
 
 // import components
@@ -30,7 +30,7 @@ function EditReservation() {
   // Submit button to update current card
   async function handleSubmit(reservation) {
     const formattedDate = formatAsDate(reservation.reservation_date);
-    await editReservation({
+    await updateReservation({
       ...reservation,
     });
     history.push(`/dashboard?date=${formattedDate}`);

@@ -1,4 +1,4 @@
-const service = require("./reservations.service");
+const reservationsService = require("./reservations.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 const hasProperties = require("../validations/hasProperties");
 
@@ -114,7 +114,7 @@ function checkTime(time) {
 
 async function reservationIdExists(req, res, next) {
   const resId = req.params.reservation_id;
-  const reservation = await service.read(resId);
+  const reservation = await reservationsService.read(resId);
 
   if (reservation) {
     res.locals.reservation = reservation;
@@ -166,13 +166,13 @@ function statusIsBooked(req, res, next) {
  */
 async function list(req, res) {
   const {date, mobile_number} = req.query;
-  const reservation = await (mobile_number ? service.search(mobile_number): service.list(date));
+  const reservation = await (mobile_number ? reservationsService.search(mobile_number): reservationsService.list(date));
   res.json({data: reservation});
 }
 
 // Create a new reservation
 async function create(req, res){
-  const reservation = await service.create(req.body.data);
+  const reservation = await reservationsService.create(req.body.data);
   res.status(201).json({data: reservation})
 }
 
@@ -183,7 +183,7 @@ async function read(req, res){
 
 // Updates singular reservation by ID
 async function update(req, res){
-  const data = await service.update(req.body.ta);
+  const data = await reservationsService.update(req.body.ta);
   res.json({data})
 }
 
@@ -191,7 +191,7 @@ async function update(req, res){
 async function setStatus(req, res){
   const {reservation_id} = req.params;
   const status = req.body.data.status;
-  const data = await service.setStatus;(reservation_id,status);
+  const data = await reservationsService.setStatus;(reservation_id,status);
   res.status(200).json({data});
 }
 

@@ -1,5 +1,5 @@
 form {
-    border: 10px solid #17A2B8 ;
+    border: 10px solid #1a41ee ;
     padding: 10px;
   }
   
@@ -46,5 +46,6 @@ tr{
 }
 
 .seatTable{
-  border: 2px solid #17A2B8
-}
+  border: 2px solid #1a41ee
+};
+

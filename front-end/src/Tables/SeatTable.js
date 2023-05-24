@@ -5,7 +5,7 @@ import { readReservation, listTables, seatTable } from "../utils/api";
 import ErrorAlert from "../layout/ErrorAlert";
 import "../App.css";
 
-function Seat() {
+function SeatTable() {
   const [tables, setTables] = useState([]);
   const [tablesError, setTablesError] = useState(null);
   const [reservation, setReservation] = useState([]);
@@ -68,11 +68,11 @@ function Seat() {
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">NAME</th>
-                  <th scope="col">PHONE</th>
-                  <th scope="col">DATE</th>
-                  <th scope="col">TIME</th>
-                  <th scope="col">PEOPLE</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Time</th>
+                  <th scope="col">People</th>
                 </tr>
               </thead>
               <tbody key={reservation.reservation_id}>
@@ -129,4 +129,4 @@ function Seat() {
   );
 }
 
-export default Seat;
+export default SeatTable;
