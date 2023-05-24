@@ -125,7 +125,7 @@ async function reservationIdExists(req, res, next) {
     message: `${resId} not found`,
   });
 }
-
+// -- Status of reservation validation functions --//
 function statusNotFinished(req, res, next) {
   const { status } = res.locals.reservation;
   if (status === "finished") {
@@ -172,13 +172,13 @@ async function list(req, res) {
 
 // Create a new reservation
 async function create(req, res){
-  const reservation = await reservationsService.create(req.body.data);
-  res.status(201).json({data: reservation})
+  const data = await reservationsService.create(req.body.data);
+  res.status(201).json({data})
 }
 
 // Returns singular reservation by ID
 async function read(req, res){
-  res.json({data: res.locals.reservation})
+  res.status(200).json({data: res.locals.reservation})
 };
 
 // Updates singular reservation by ID
@@ -189,9 +189,11 @@ async function update(req, res){
 
 // Sets status of existing reservation
 async function setStatus(req, res){
-  const {reservation_id} = req.params;
-  const status = req.body.data.status;
-  const data = await reservationsService.setStatus;(reservation_id,status);
+ const updatedReservation = {
+  ...req.body.data,
+  reservation_id: res.locals.reservation.reservation_id,
+ };
+ const data = await reservationsService.setStatus(updatedReservation)
   res.status(200).json({data});
 }
 

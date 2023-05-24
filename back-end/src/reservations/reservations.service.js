@@ -12,7 +12,7 @@ function list(reservation_date){
 function create(reservation){
     return knex("reservations")
     .insert(reservation, "*")
-    .then(createdReservation => createdReservation[0])
+    .then((createdReservation) => createdReservation[0])
 };
 
 function read(reservation_id){
@@ -44,7 +44,7 @@ function update(editReservation){
     .select("*")
     .where({reservation_id: editReservation.reservation_id})
     .update(editReservation, "*")
-    .then(updatedReservation => updatedReservation[0])
+    .then((updatedReservation) => updatedReservation[0])
 }
 
 

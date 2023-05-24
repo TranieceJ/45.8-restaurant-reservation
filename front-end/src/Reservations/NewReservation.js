@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { createReservation } from "../utils/api";
 import { formatAsDate } from "../utils/date-time";
-
-// import components
 import ErrorAlert from "../layout/ErrorAlert";
 import ReservationForm from "./ReservationForm";
+
 
 const initialState = {
   first_name: "",
@@ -16,8 +15,9 @@ const initialState = {
   people: "",
 };
 
+
 function NewReservation() {
-  const [errorMessage, setErrorMessage] = useState(null);
+  const [error, setError] = useState(null);
 
   const history = useHistory();
 
@@ -29,7 +29,7 @@ function NewReservation() {
         `/dashboard?date=${formatAsDate(createdReservation.reservation_date)}`
       );
     } catch (error) {
-      setErrorMessage(error);
+      setError(error);
     }
     return abortController;
   };
@@ -37,7 +37,7 @@ function NewReservation() {
   return (
     <div>
       <h2>Create Reservation</h2>
-      <ErrorAlert error={errorMessage} />
+      <ErrorAlert error={error} />
 
       <ReservationForm
         handleSubmit={handleSubmit}
@@ -45,7 +45,7 @@ function NewReservation() {
         submitLabel="Submit"
         cancelLabel="Cancel"
         initialState={initialState}
-        error={errorMessage}
+        error={error}
       />
     </div>
   );

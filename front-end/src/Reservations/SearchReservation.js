@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-
-// Utility functions imported
 import { searchByNumber } from "../utils/api";
-
-// Components imported
 import ReservationList from "./ReservationList";
 import ErrorAlert from "../layout/ErrorAlert";
 
@@ -41,14 +37,14 @@ function SearchReservation() {
             maxLength="10"
             required={true}
             className="form-control"
-            placeholder="Find a Reservation"
-            aria-label="Find a Reservation"
+            placeholder="Enter Mobile Number"
+            aria-label="Enter Mobile Number"
             aria-describedby="basic-addon2"
             onChange={handleChange}
             value={reservations.mobile_number}
           ></input>
           <div className="input-group-append">
-            <button className="btn btn-outline-secondary" type="submit">
+            <button className="btn btn-secondary" type="submit">
               Find
             </button>
           </div>

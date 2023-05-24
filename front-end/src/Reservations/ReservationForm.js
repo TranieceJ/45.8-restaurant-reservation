@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-
-// Utility functions imported
+import "../App.css";
 import { formatAsTime } from "../utils/date-time";
 
 function ReservationForm({
@@ -13,7 +12,7 @@ function ReservationForm({
 }) {
   const [reservationData, setReservationData] = useState({ ...initialState });
 
-  const handleReservationUpdate = (event) => {
+  const changeHandler = (event) => {
     if (event.target.name === "people") {
       setReservationData({
         ...reservationData,
@@ -31,7 +30,7 @@ function ReservationForm({
     setReservationData(initialState);
   }, [initialState]);
 
-  const onSubmit = (event) => {
+  const submitHandler = (event) => {
     event.preventDefault();
     const formattedTime = formatAsTime(reservationData.reservation_time);
     handleSubmit({ ...reservationData, reservation_time: formattedTime });
@@ -41,7 +40,7 @@ function ReservationForm({
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={submitHandler}>
       <div className="form-group">
         <label htmlFor="first_name">
           First Name:
@@ -53,7 +52,7 @@ function ReservationForm({
             required={true}
             value={reservationData.first_name || ""}
             placeholder="First Name"
-            onChange={handleReservationUpdate}
+            onChange={changeHandler}
           />
         </label>
         <br />
@@ -67,7 +66,7 @@ function ReservationForm({
             required={true}
             value={reservationData.last_name || ""}
             placeholder="Last Name"
-            onChange={handleReservationUpdate}
+            onChange={changeHandler}
           />
         </label>
         <br />
@@ -82,7 +81,7 @@ function ReservationForm({
             required={true}
             value={reservationData.mobile_number || ""}
             placeholder="Mobile Number"
-            onChange={handleReservationUpdate}
+            onChange={changeHandler}
           />
         </label>
         <br />
@@ -96,7 +95,7 @@ function ReservationForm({
             required={true}
             value={reservationData.reservation_date || ""}
             placeholder="Reservation Date"
-            onChange={handleReservationUpdate}
+            onChange={changeHandler}
           />
         </label>
         <br />
@@ -110,7 +109,7 @@ function ReservationForm({
             required={true}
             value={reservationData.reservation_time || ""}
             placeholder="Reservation Time"
-            onChange={handleReservationUpdate}
+            onChange={changeHandler}
           />
         </label>
         <br />
@@ -124,19 +123,19 @@ function ReservationForm({
             required={true}
             value={reservationData.people || ""}
             placeholder="Number of People"
-            onChange={handleReservationUpdate}
+            onChange={changeHandler}
           />
         </label>
       </div>
       <div>
         <button
           type="button"
-          className="btn btn-outline-danger mr-2"
+          className="btn btn-danger mr-2"
           onClick={onCancel}
         >
           {cancelLabel}
         </button>
-        <button type="submit" className="btn btn-outline-success">
+        <button type="submit" className="btn btn-success">
           {submitLabel}
         </button>
       </div>

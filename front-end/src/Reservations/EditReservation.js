@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-
-// import utility functions
 import { updateReservation, readReservation } from "../utils/api";
 import { formatAsDate } from "../utils/date-time";
-
-// import components
 import ReservationForm from "./ReservationForm";
 
 function EditReservation() {
@@ -21,13 +17,13 @@ function EditReservation() {
     return () => abortController.abort();
   }, [reservation_id]);
 
-  // Cancel button to return to current deckId
+  // Cancel button to return to current reservationId
   const onCancel = (event) => {
     event.preventDefault();
     history.goBack();
   };
 
-  // Submit button to update current card
+  // Submit button to update current reservation
   async function handleSubmit(reservation) {
     const formattedDate = formatAsDate(reservation.reservation_date);
     await updateReservation({

@@ -9,19 +9,19 @@ const hasRequiredProperties = hasProperties(VALID_PROPERTIES);
 
 
 
-// list table/s
+// List table/s
 async function list(req, res, next) {
   const data = await tablesService.list();
   res.status(200).json({ data });
 }
 
-// create a table
+// Create a new table
 async function create(req, res, next) {
   const data = await tablesService.create(req.body.data);
   res.status(201).json({ data });
 }
 
-// update a table
+// Update table based on given ID
 async function update(req, res) {
   const updatedTable = {
     ...req.body.data,
@@ -33,6 +33,7 @@ async function update(req, res) {
     reservation_id: res.locals.reservation.reservation_id,
     status: "seated",
   };
+  // Set status of said table
   await reservationsService.setStatus(updatedReservation);
 
   const data = await tablesService.update(updatedTable);
@@ -44,7 +45,7 @@ async function read(req, res, next) {
   res.status(200).json({ data: res.locals.table });
 }
 
-// Deletes a table
+// Deletes a table based on given ID
 async function destroy(req, res, next) {
   const updatedTable = {
     ...res.locals.table,
@@ -57,6 +58,7 @@ async function destroy(req, res, next) {
   const updatedReservation = {
     ...reservation,
     status: "finished",
+    // Change status of reservation to finished
   };
 
   const data = await tablesService.update(updatedTable);
