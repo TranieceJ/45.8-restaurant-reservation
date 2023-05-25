@@ -44,7 +44,7 @@ function ReservationList({ reservations, loadDashboard }) {
 
   return (
     <div className="table-responsive">
-      <table className="table table-sm w-75 text-center mb-5">
+      <table className="table table-sm w-80 text-center mb-5">
         <thead>
           <tr>
             <th scope="col">First Name</th>

@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
 import { readReservation, listTables, seatTable } from "../utils/api";
 import ErrorAlert from "../layout/ErrorAlert";
-import "../App.css";
+import "../layout/Layout.css";
 
 function SeatTable() {
   const [tables, setTables] = useState([]);
@@ -49,7 +49,7 @@ function SeatTable() {
       history.push(`/dashboard`);
     } catch (error) {
       setTablesError(error);
-      setReservationError(error);
+      // setReservationError(error);
       return () => abortController.abort();
     }
   };

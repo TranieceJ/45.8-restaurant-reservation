@@ -6,7 +6,7 @@ const abortController = new AbortController();
 
 const cancelHandler = async ()=>{
     const confirm = window.confirm(
-        "Do you wish to cancel this reservation?\nThis cannot be undone."
+        "Do you want to cancel this reservation?\nThis cannot be undone."
     )
     if(confirm){
         await cancelReservation(reservation_id);

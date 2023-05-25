@@ -40,12 +40,14 @@ describe("US-05 - Finish an occupied table - E2E", () => {
         reservation_time: "13:45",
         people: 4,
       });
+      
 
       table = await createTable({
         table_name: `#${Date.now().toString(10)}`,
         capacity: 99,
         reservation_id: reservation.reservation_id,
       });
+      
 
       page = await browser.newPage();
       page.on("console", onPageConsole);

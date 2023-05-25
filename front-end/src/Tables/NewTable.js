@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import { createTable } from "../utils/api";
 import { useHistory } from "react-router-dom";
 import TableForm from "./TableForm";
-import "../App.css";
+import "../layout/Layout.css";
 import ErrorAlert from "../layout/ErrorAlert";
 
-const initialState = {
-  table_name: "",
-  capacity: "",
-};
+
 
 function NewTable() {
+  const initialState = {
+    table_name: "",
+    capacity: "",
+  };
+
   const [errorMessage, setErrorMessage] = useState(null);
 
   const history = useHistory();

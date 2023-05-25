@@ -1,4 +1,42 @@
 .side-bar {
-  background-color: #393a44;
+  background-color: #00008B;
   min-width: 200px;
 }
+form {
+  display: flex;
+  padding: 10px;
+}
+
+
+form label {
+flex: 1;
+}
+
+form input {
+display: flex;
+flex: 2;
+justify-content: center;
+}
+
+
+td, th{
+text-align: center
+}
+
+
+form div button{
+  display: flex;
+  align-content: flex-end;
+}
+
+h1{
+  color: #00008B;
+}
+
+.btn-outline-secondary{
+  color: #00008B;
+  font-weight: bold;
+  
+}
+
+

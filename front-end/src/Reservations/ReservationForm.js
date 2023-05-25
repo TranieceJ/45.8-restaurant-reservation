@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../App.css";
+
 import { formatAsTime } from "../utils/date-time";
 
 function ReservationForm({
@@ -76,8 +76,7 @@ function ReservationForm({
             className="form-control"
             name="mobile_number"
             id="mobile_number"
-            type="number"
-            maxLength="10"
+            type="string"
             required={true}
             value={reservationData.mobile_number || ""}
             placeholder="Mobile Number"

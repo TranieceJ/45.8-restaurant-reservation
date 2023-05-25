@@ -27,12 +27,12 @@ function TableList({ tables, handleFinishReservation }) {
 
   return (
     <div className="table-responsive">
-      <table className="table table-sm w-75 text-center">
+      <table className="table table-sm w-80 text-center">
         <thead>
           <tr>
             <th scope="col">Table Name</th>
             <th scope="col">Capacity</th>
-            <th scope="col">Table Status</th>
+            <th scope="col">Status</th>
             <th scope="col">Finish</th>
           </tr>
         </thead>

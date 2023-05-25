@@ -2,11 +2,10 @@ const tablesService = require("./tables.service");
 const reservationsService = require("../reservations/reservations.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 
-const VALID_PROPERTIES = ["table_name", "capacity",];
+const VALID_PROPERTIES = ["table_name", "capacity","reservation_id"];
 
 const hasProperties = require("../validations/hasProperties");
-const hasRequiredProperties = hasProperties(VALID_PROPERTIES);
-
+const hasRequiredProperties = hasProperties(["table_name","capacity"]);
 
 
 // List table/s
@@ -33,6 +32,7 @@ async function update(req, res) {
     reservation_id: res.locals.reservation.reservation_id,
     status: "seated",
   };
+  
   // Set status of said table
   await reservationsService.setStatus(updatedReservation);
 
@@ -118,7 +118,7 @@ async function tableExists(req, res, next) {
 }
 
 // validate whether capacity is a number
-function validateCapacityValue(req, res, next) {
+function capacityIsANumber(req, res, next) {
   const { data: { capacity } = {} } = req.body;
   if (Number.isInteger(capacity)) {
     next();
@@ -167,7 +167,7 @@ async function reservationIdExists(req, res, next) {
 function tableCapacity(req, res, next) {
   const capacity = res.locals.table.capacity;
   if (capacity < res.locals.reservation.people) {
-    next({
+    return next({
       status: 400,
       message: `This table does not have sufficient capacity.`,
     });
@@ -205,7 +205,7 @@ module.exports = {
     hasData,
     hasOnlyValidProperties,
     hasRequiredProperties,
-    validateCapacityValue,
+    capacityIsANumber,
     validTableName,
     asyncErrorBoundary(create),
   ],

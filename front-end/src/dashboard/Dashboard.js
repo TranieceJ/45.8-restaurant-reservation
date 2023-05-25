@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "../App.css"
-
-// import utility functions
 import { finishReservation, listReservations, listTables } from "../utils/api";
 import { next, previous, today } from "../utils/date-time";
 import { useHistory } from "react-router-dom";
-
-// import compnents
 import ErrorAlert from "../layout/ErrorAlert";
 import ReservationList from "../Reservations/ReservationList";
 import TableList from "../Tables/TableList";
@@ -21,6 +16,7 @@ function Dashboard({ date }) {
   const [reservations, setReservations] = useState([]);
   const [tables, setTables] = useState([]);
   const [reservationsError, setReservationsError] = useState(null);
+  const [tablesError, setTablesError] = useState(null)
 
   const history = useHistory();
 
@@ -39,7 +35,8 @@ function Dashboard({ date }) {
   function loadTables() {
     const abortController = new AbortController();
     listTables(abortController.signal)
-      .then(setTables);
+      .then(setTables)
+      .catch(setTablesError);
     return () => abortController.abort();
   }
 
@@ -60,15 +57,6 @@ function Dashboard({ date }) {
     return () => abortController.abort();
   };
 
-  function previousDay(date) {
-    const previousDate = previous(date);
-    history.push(`/dashboard?date=${previousDate}`);
-  }
-
-  function nextDay(date) {
-    const nextDate = next(date);
-    history.push(`/dashboard?date=${nextDate}`);
-  }
 
   return (
     <main>
@@ -83,7 +71,7 @@ function Dashboard({ date }) {
             <button
               type="button"
               className="btn btn-outline-secondary btn m-1 mt-2 float-right"
-              onClick={() => previousDay(date)}
+              onClick={() => history.push(`/dashboard?date=${previous(date)}`)}
             >
               Previous Day
             </button>
@@ -97,7 +85,7 @@ function Dashboard({ date }) {
             <button
               type="button"
               className="btn btn-outline-secondary btn m-1 mt-2 float-right"
-              onClick={() => nextDay(date)}
+              onClick={() => history.push(`/dashboard?date=${next(date)}`)}
             >
               Next Day
             </button>
@@ -113,10 +101,10 @@ function Dashboard({ date }) {
         reservations={reservations}
         loadDashboard={loadDashboard}
       />
-      <TableList
+      {!tablesError && <TableList
         tables={tables}
         handleFinishReservation={handleFinishReservation}
-      />
+      />}
     </main>
   );
 }

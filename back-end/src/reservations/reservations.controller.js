@@ -166,7 +166,7 @@ function statusIsBooked(req, res, next) {
  */
 async function list(req, res) {
   const {date, mobile_number} = req.query;
-  const reservation = await (mobile_number ? reservationsService.search(mobile_number): reservationsService.list(date));
+  const reservation = await (mobile_number ? reservationsService.readByNumber(mobile_number): reservationsService.list(date));
   res.json({data: reservation});
 }
 
@@ -183,7 +183,7 @@ async function read(req, res){
 
 // Updates singular reservation by ID
 async function update(req, res){
-  const data = await reservationsService.update(req.body.ta);
+  const data = await reservationsService.update(req.body.data);
   res.json({data})
 }
 
@@ -197,6 +197,7 @@ async function setStatus(req, res){
   res.status(200).json({data});
 }
 
+// Exports for use in reservations router
 module.exports = {
   list: [asyncErrorBoundary(list)],
   create: [
@@ -215,10 +216,9 @@ module.exports = {
     asyncErrorBoundary(setStatus),
   ],
   update: [
-    hasRequiredProperties,
     asyncErrorBoundary(reservationIdExists),
-    validateProperties,
-    validStatus,
+    hasRequiredProperties,
+    asyncErrorBoundary(validateProperties),
     validateReservationDate,
     validateReservationTime,
     asyncErrorBoundary(update),
