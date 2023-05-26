@@ -27,7 +27,8 @@ function TableList({ tables, handleFinishReservation }) {
 
   return (
     <div className="table-responsive">
-      <table className="table table-sm w-80 text-center">
+      <h4>Current Tables</h4>
+      <table className="table table-sm w-80 text-center table-hover">
         <thead>
           <tr>
             <th scope="col">Table Name</th>

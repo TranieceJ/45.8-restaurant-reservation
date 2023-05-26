@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { finishReservation, listReservations, listTables } from "../utils/api";
 import { next, previous, today } from "../utils/date-time";
 import { useHistory } from "react-router-dom";
+
 import ErrorAlert from "../layout/ErrorAlert";
 import ReservationList from "../Reservations/ReservationList";
 import TableList from "../Tables/TableList";
@@ -16,7 +17,7 @@ function Dashboard({ date }) {
   const [reservations, setReservations] = useState([]);
   const [tables, setTables] = useState([]);
   const [reservationsError, setReservationsError] = useState(null);
-  const [tablesError, setTablesError] = useState(null)
+  const [tablesError, setTablesError] = useState(null);
 
   const history = useHistory();
 
@@ -34,9 +35,7 @@ function Dashboard({ date }) {
   useEffect(loadTables, []);
   function loadTables() {
     const abortController = new AbortController();
-    listTables(abortController.signal)
-      .then(setTables)
-      .catch(setTablesError);
+    listTables(abortController.signal).then(setTables).catch(setTablesError);
     return () => abortController.abort();
   }
 
@@ -57,15 +56,13 @@ function Dashboard({ date }) {
     return () => abortController.abort();
   };
 
-
   return (
     <main>
+      <div className="dashboard-header">
+        <h1>Dashboard</h1>
+        <h5>Today's Date: {date}</h5>
+      </div>
       <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom  d-md-flex">
-        <div>
-          <h1>Dashboard</h1>
-          <h5>Today's Date: {date}</h5>
-        </div>
-
         <div className="btn-toolbar mb-2 mb-md-0">
           <div className="btn-group me-2">
             <button
@@ -73,6 +70,7 @@ function Dashboard({ date }) {
               className="btn btn-outline-secondary btn m-1 mt-2 float-right"
               onClick={() => history.push(`/dashboard?date=${previous(date)}`)}
             >
+              <span class="material-symbols-outlined">arrow_back_ios</span>
               Previous Day
             </button>
             <button
@@ -88,6 +86,7 @@ function Dashboard({ date }) {
               onClick={() => history.push(`/dashboard?date=${next(date)}`)}
             >
               Next Day
+              <span class="material-symbols-outlined">arrow_forward_ios</span>
             </button>
           </div>
         </div>
@@ -101,10 +100,12 @@ function Dashboard({ date }) {
         reservations={reservations}
         loadDashboard={loadDashboard}
       />
-      {!tablesError && <TableList
-        tables={tables}
-        handleFinishReservation={handleFinishReservation}
-      />}
+      {!tablesError && (
+        <TableList
+          tables={tables}
+          handleFinishReservation={handleFinishReservation}
+        />
+      )}
     </main>
   );
 }

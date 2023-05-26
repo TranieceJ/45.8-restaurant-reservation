@@ -44,7 +44,7 @@ function ReservationList({ reservations, loadDashboard }) {
 
   return (
     <div className="table-responsive">
-      <table className="table table-sm w-80 text-center mb-5">
+      <table className="table table-sm text-center w-70 mb-5 table-hover">
         <thead>
           <tr>
             <th scope="col">First Name</th>
@@ -57,7 +57,7 @@ function ReservationList({ reservations, loadDashboard }) {
           </tr>
         </thead>
 
-        <tbody className="table-group-divider">{reservationsMap}</tbody>
+        <tbody className="table-group">{reservationsMap}</tbody>
       </table>
     </div>
   );

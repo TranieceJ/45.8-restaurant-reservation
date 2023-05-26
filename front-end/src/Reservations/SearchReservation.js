@@ -27,25 +27,24 @@ function SearchReservation() {
 
   return (
     <main>
+      <h2>Find a Reservation</h2>
       <form onSubmit={handleSubmit}>
-        <h2>Find a Reservation</h2>
         <ErrorAlert error={error} />
-        <div className="input-group mb-3 w-50">
+        <div className="input-group mb-3 w-75">
           <input
             name="mobile_number"
             type="text"
-            maxLength="10"
             required={true}
-            className="form-control"
+            className="form-control me-auto"
             placeholder="Enter Mobile Number"
             aria-label="Enter Mobile Number"
             aria-describedby="basic-addon2"
             onChange={handleChange}
             value={reservations.mobile_number}
           ></input>
-          <div className="input-group-append">
+          <div className="input-group-btn ml-2">
             <button className="btn btn-secondary" type="submit">
-              Find
+              Search
             </button>
           </div>
         </div>
@@ -60,7 +59,7 @@ function SearchReservation() {
           </div>
         ) : (
           <div
-            className="row d-md-flex mb-3 alert alert-dark text-center w-50"
+            className="row d-md-flex mb-3 alert alert-dark text-center w-75"
             role="alert"
           >
             No reservations found

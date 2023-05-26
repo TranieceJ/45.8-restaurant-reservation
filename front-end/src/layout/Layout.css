@@ -1,9 +1,13 @@
+body{
+  font-family: 'Montserrat', sans-serif;
+}
+
 .side-bar {
   background-color: #00008B;
   min-width: 200px;
 }
+
 form {
-  display: flex;
   padding: 10px;
 }
 
@@ -12,31 +16,64 @@ form label {
 flex: 1;
 }
 
-form input {
-display: flex;
-flex: 2;
-justify-content: center;
-}
 
 
 td, th{
 text-align: center
 }
 
-
-form div button{
+.form-group{
   display: flex;
-  align-content: flex-end;
+  flex-direction: column;
+  margin-bottom: 10%;
+  
 }
+
+.input-group{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  
+}
+
 
 h1{
   color: #00008B;
+}
+h2{
+  color: #00008B;
+  margin-top: 20px;
 }
 
 .btn-outline-secondary{
   color: #00008B;
   font-weight: bold;
-  
+  padding: auto;
 }
 
+.dashboard-header{
+  margin-top: 20px;
+}
 
+.dashboard-header h1{
+  margin-bottom: 15px;
+}
+
+.hstack {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: stretch;
+}
+
+.vstack {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.material-symbols-outlined{
+  font-size: .8em;
+
+}

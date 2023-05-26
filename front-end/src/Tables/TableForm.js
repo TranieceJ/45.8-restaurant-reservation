@@ -64,15 +64,16 @@ function TableForm({
         </label>
       </div>
       <div>
+       
+        <button type="submit" className="btn btn-success float-right">
+          {submitLabel}
+        </button>
         <button
           type="button"
-          className="btn btn-danger mr-2"
+          className="btn btn-danger mr-2 float-right"
           onClick={onCancel}
         >
           {cancelLabel}
-        </button>
-        <button type="submit" className="btn btn-success">
-          {submitLabel}
         </button>
       </div>
     </form>
