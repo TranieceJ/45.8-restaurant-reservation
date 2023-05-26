@@ -10,9 +10,9 @@ Customers will not be able to access the system online, at this point.
 [Backend Deployment](https://backend-reservation-dz4e.onrender.com)
 
 ## Technology Used
-  #### Frontend:
+#### Frontend:
 - Javascript, React, HTML, CSS, Bootstrap
-  #### Backend:
+#### Backend:
 -Node.js, Express, Knex, PostgreSQL
 ## Screenshots
 ### Dashboard
