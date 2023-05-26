@@ -107,18 +107,17 @@ function SeatTable() {
         <div>
           <div className="row">
             <div className="col-sm">
-              <button type="submit" className="btn btn-info btn-block mr-2">
-                <span className="oi oi-check"></span>
+              <button type="submit" className="btn btn-success mr-2">
+                
                 &nbsp;Submit
               </button>
             </div>
             <div className="col-sm">
               <button
                 type="button"
-                className="btn btn-secondary btn-block mr-2"
+                className="btn btn-danger  mr-2"
                 onClick={history.goBack}
               >
-                <span className="oi oi-x"></span>
                 &nbsp;Cancel
               </button>
             </div>
