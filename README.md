@@ -5,15 +5,54 @@ This Restaurant Reservation Management application was designed for fine dining 
 Customers will not be able to access the system online, at this point.
 
 ## Deployed Application
+[Frontend Depoloyment](https://frontend-reservation.onrender.com/dashboard)
 
+[Backend Deployment](https://backend-reservation-dz4e.onrender.com)
 
 ## Technology Used
   #### Frontend:
-
+- Javascript, React, HTML, CSS, Bootstrap
   #### Backend:
-
+-Node.js, Express, Knex, PostgreSQL
 ## Screenshots
+### Dashboard
+![Dashboard](./screenshots/dashboard.png)
 
+### Create a new reservation
+![Create Reservation](./screenshots/create-reservation.png)
+
+### Create New Table
+![Create New Table](./screenshots/create-new-table.png)
+
+### Edit Reservation
+![Edit Reservation](./screenshots/edit-reservation.png)
+
+### Seat Reservation
+![Seat Reservation](./screenshots/seat-reservation.png)
+
+### Search Reservation
+![Search Reservation](./screenshots/search-reservation.png)
+
+### Finish Reservation
+![Finish Reservation](./screenshots/finish-reservation.png)
+
+## API Documentation
+Use the following routes for the API:
+The API allows for the following routes:
+
+| Method | Route                                  | Description                              |
+| ------ | -------------------------------------- | ---------------------------------------- |
+| `GET`  | `/reservations`                        | List all reservations for current date   |
+| `GET`  | `/reservations?date=YYYY-MM-DD`        | List all reservations for specified date |
+| `POST` | `/reservations`                        | Create new reservation                   |
+| `GET`  | `/reservations/:reservation_id`        | List reservation by ID                   |
+| `PUT`  | `/reservations/:reservation_id`        | Update reservation                       |
+| `PUT`  | `/reservations/:reservation_id/status` | Update reservation status                |
+
+| `GET` | `/tables` | List all tables
+| `POST` | `/tables` | Create new table
+| `PUT` | `/tables/:table_id/seat` | Assign a table to a reservation (changes reservation's `status` to "seated")
+| `DELETE` | `/tables/:table_id/seat` | Remove reservation from a table (changes reservation's `status` to "finished")
 
 ## Installation
 
