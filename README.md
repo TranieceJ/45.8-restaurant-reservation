@@ -5,7 +5,7 @@ This Restaurant Reservation Management application was designed for fine dining 
 Customers will not be able to access the system online, at this point.
 
 ## Deployed Application
-[Frontend Depoloyment](https://frontend-reservation.onrender.com/dashboard)
+[Frontend Depoloyment](https://frontend-reservation.onrender.com)
 
 [Backend Deployment](https://backend-reservation-dz4e.onrender.com)
 
