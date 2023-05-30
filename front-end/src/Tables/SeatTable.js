@@ -93,15 +93,15 @@ function SeatTable() {
 
         <div className="container row">
           <div className="col">
-            <h3>Seat at table:</h3>
+            <h4>Seat at table:</h4>
           </div>
           <div className="col">
-            <h4>
+            <h5>
               <select required name="table_id" onChange={handleChange}>
                 <option>Select a table</option>
                 {availableTables}
               </select>
-            </h4>
+            </h5>
           </div>
         </div>
         <div>
