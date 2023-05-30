@@ -76,7 +76,7 @@ function ReservationForm({
             className="form-control"
             name="mobile_number"
             id="mobile_number"
-            type="string"
+            type="number"
             required={true}
             value={reservationData.mobile_number || ""}
             placeholder="Mobile Number"
